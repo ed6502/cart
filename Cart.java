@@ -8,4 +8,8 @@ public interface Cart {
 	// intelligent Cart can also do checkout, which could be a separate class
 	public double getTotal();
 	public ArrayList<Item> getItems();
+	
+	public void addOffer(Offer o);
+	public ArrayList<Offer> getOffers();
+
 }

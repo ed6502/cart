@@ -18,6 +18,8 @@ public class Main {
 			for (String arg:args) {
 				cart.add(ItemFactory.create(arg));
 			}
+			cart.addOffer(new AppleOffer());
+			cart.addOffer(new OrangeOffer());
 			displayCart(cart);
 		}
 
@@ -26,12 +28,18 @@ public class Main {
 	public static void displayCart(ShoppingCart cart) {
 		String contents = "Shopping Cart:\n";
 		ArrayList<Item> items= cart.getItems();
+		ArrayList<Offer> offers = cart.getOffers();
+		
 		if (items.isEmpty()) {
 			contents += "Is Empty";
 		}
 		else {
 			for (Item i:items) {
 				contents += i.getDescription() + "\t " + i.getPenceValue() + "\n";
+			}
+			contents +="--------------\n";
+			for (Offer o:offers) {
+				contents += o.getDescription() + "\t (-" + o.getPenceValue() + ")\n";
 			}
 			contents +="--------------\n";
 			contents +="TOTAL : £" + cart.getTotal();
